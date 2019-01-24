@@ -57,10 +57,12 @@ contract SimpleBank {
     /// @notice Enroll a customer with the bank
     /// @return The users enrolled status
     // Emit the appropriate event
-    function enroll() public returns (bool){
-        require(enrolled[msg.sender], "contumer doesn't exist");
-        emit LogEnrolled(msg.sender);
-        return enrolled[msg.sender];
+    function enroll(address accountAddress) public returns (bool){
+        require(enrolled[accountAddress], "customer doesn't exist");
+        
+        emit LogEnrolled(accountAddress);
+        
+        return enrolled[accountAddress];
     }
 
     /// @notice Deposit ether into bank
