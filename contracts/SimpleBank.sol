@@ -16,7 +16,7 @@ contract SimpleBank {
     mapping (address => uint) private balances;
     
     /* Fill in the keyword. We want to create a getter function and allow contracts to be able to see if a user is enrolled.  */
-    mapping (address => bool) internal enrolled;
+    mapping (address => bool) public enrolled;
 
     /* Let's make sure everyone knows who owns the bank. Use the appropriate keyword for this*/
     address public owner;
@@ -58,8 +58,6 @@ contract SimpleBank {
     /// @return The users enrolled status
     // Emit the appropriate event
     function enroll(address accountAddress) public returns (bool){
-        require(enrolled[accountAddress], "customer doesn't exist");
-        
         emit LogEnrolled(accountAddress);
         
         return enrolled[accountAddress];
